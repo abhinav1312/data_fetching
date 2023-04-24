@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+td, th{
+    @apply text-left p-4 border whitespace-nowrap;
+}
+
+tr{
+    @apply hover:bg-gray-300 transition-all ;
+}

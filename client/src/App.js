@@ -1,11 +1,9 @@
-import Header from "./components/Header";
-import SearchFilter from "./components/SearchFilter";
+import IndexPage from "./components/IndexPage";
 
 function App() {
   return (
     <div>
-      <Header />
-      <SearchFilter />
+      <IndexPage />
     </div>
   );
 }
