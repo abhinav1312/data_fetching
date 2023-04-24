@@ -9,17 +9,19 @@ const SearchFilter = () => {
   const [query, setQuery] = useState("");
   const [dropdown, setDropdown] = useState(false);
 
-  const handleBtnClick = (e) => {
+  const handleBtnClick = async (e) => {
     setTask(e.target.name);
     setDropdown(false);
     setQuery(e.target.innerHTML);
-    // formRef.current.submit();
+    console.log("Handelbtn clicked")
+    const {data} = await axios.get(`/${e.target.name}`, {params: {page: 1, size: 10}});
+    console.log(data);
   }
 
   const handleQuerySubmit = async (e) =>{
     e.preventDefault();
+    console.log("Form submitted");
     console.log("Task: ", task);
-    // const {data} = await axios.get(`/${task}`);
     // console.log(data);
   }
   return (
