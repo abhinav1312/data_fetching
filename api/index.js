@@ -5,6 +5,8 @@ const path = require("path");
 const app = express();
 const port = 4000;
 const data = require('./data/sample_data.json')
+const UserDetail = require('./model/userDetail')
+const usersRoutes = require('./routes');
 // using .env
 require("dotenv").config();
 
@@ -19,6 +21,8 @@ app.use(
     )
 )
 
+app.use('/', usersRoutes);
+
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
@@ -31,23 +35,9 @@ mongoose
     console.log(("Connection unsuccessfull", err));
 });
 
-app.get('/', (req, res)=>{
-    res.json("HELLO");
-})
+
+
 
 app.listen(port, ()=>{
     console.log(`Server running on port ${port}...`)
 })
-
-const insertData = async () => {
-    // const collectionRef = mongoose.Collection('userDetail');
-    // mongoose.
-    try{
-        await collectionRef.insertMany(JSON.parse(data));
-    }
-    catch(error){
-        console.log("Error occured while inserting.")
-    }
-}
-
-// insertData()
