@@ -8,22 +8,18 @@ const Table = ({ task, userData, page, size, prevClick, nextClick }) => {
           <tr>
             <th className="text-left p-4"> Serial No. </th>
             <th> City </th>
-            <th>  User count </th>
+            <th> User count </th>
             <th> Average income </th>
           </tr>
 
           {userData.map((data, id) => {
-            const {
-              _id,
-              userCount,
-              avgIncome
-            } = data;
+            const { _id, userCount, avgIncome } = data;
             return (
               <tr key={id}>
                 <td>{(page - 1) * size + (id + 1)}</td>
                 <td>{_id}</td>
                 <td>{userCount}</td>
-                <td>{avgIncome}</td>   
+                <td>{avgIncome}</td>
               </tr>
             );
           })}
@@ -78,7 +74,7 @@ const Table = ({ task, userData, page, size, prevClick, nextClick }) => {
               <td>{(page - 1) * size + (id + 1)}</td>
               <td>{first_name}</td>
               <td>{last_name}</td>
-              <td>{email.trim()}</td>
+              <td>{email}</td>
               <td>{gender}</td>
               <td>{income}</td>
               <td>{phone_price}</td>
