@@ -3,7 +3,7 @@ import React from "react";
 const Table = ({ task, userData, page, size, prevClick, nextClick }) => {
   if (task === "task5") {
     return (
-      <div>
+      <div className="flex-1">
         <table className="w-full overflow-scroll">
           <tr>
             <th className="text-left p-4"> Serial No. </th>

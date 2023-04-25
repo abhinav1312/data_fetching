@@ -16,6 +16,7 @@ app.use(
         {
             credentials: true,
             origin: "https://data-fetching-three.vercel.app"
+            // origin: "http://localhost:3000"
         }
     )
 )

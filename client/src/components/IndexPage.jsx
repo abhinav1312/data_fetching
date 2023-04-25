@@ -4,6 +4,7 @@ import axios from "axios";
 import SearchFilter from "./SearchFilter";
 import Table from "./Table";
 import Loader from "./Loader";
+import Footer from "./Footer";
 
 const IndexPage = () => {
   const size = 5;
@@ -11,9 +12,10 @@ const IndexPage = () => {
   const [query, setQuery] = useState(""); // query to fetch
   const [dropdown, setDropdown] = useState(false);
   const [page, setPage] = useState(1); // pagination
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState([]); // populate with the data fetched from backend
   const [loader, setLoader] = useState(false);
 
+  // on page reload or task changing
   useEffect(() => {
     const getData = async () => {
       try {
@@ -24,7 +26,7 @@ const IndexPage = () => {
       }
     };
     getData();
-  }, [task]);
+  }, []);
 
   const handleBtnClick = async (e) => {
     setLoader(true);
@@ -90,9 +92,10 @@ const IndexPage = () => {
     }
   };
   return (
-    <div className="py-4 px-16">
+    <div className="flex flex-col justify-between min-h-screen py-4 px-16">
       {loader && <Loader />}
       <Header />
+      <div className="flex-1">
       <SearchFilter
         query={query}
         dropdown={dropdown}
@@ -108,7 +111,9 @@ const IndexPage = () => {
           nextClick={nextClick}
           task={task}
         />
-      )}
+        )}
+        </div>
+        <Footer />
     </div>
   );
 };
