@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require("cors");
 const path = require("path");
 const app = express();
-const port = 4000;
+const port = process.env.port || 4000;
 const usersRoutes = require('./routes');
 const {MONGO_URL} = require('./config/keys')
 // using .env 
