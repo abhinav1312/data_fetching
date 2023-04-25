@@ -34,14 +34,6 @@ mongoose
     console.log(("Connection unsuccessfull", err));
 });
 
-
-if(process.env.NODE_ENV === 'production'){
-  app.get('/', (req, res)=>{
-    app.use(express.static(path.resolve(__dirname, '..', 'client', 'build')));
-    res.sendFikle(path.resolve(__dirname, '..', 'client', 'build', 'index.html'))
-  })
-}
-
 app.listen(port, ()=>{
     console.log(`Server running on port ${port}...`)
 })
