@@ -4,10 +4,9 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 const port = 4000;
-const data = require('./data/sample_data.json')
-const UserDetail = require('./model/userDetail')
 const usersRoutes = require('./routes');
-// using .env
+const {MONGO_URL} = require('./config/keys')
+// using .env 
 require("dotenv").config();
 
 // middlewares
@@ -24,7 +23,7 @@ app.use(
 app.use('/', usersRoutes);
 
 mongoose
-  .connect(process.env.MONGO_URL, {
+  .connect(MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -36,7 +35,12 @@ mongoose
 });
 
 
-
+if(process.env.NODE_ENV === 'production'){
+  app.get('/', (req, res)=>{
+    app.use(express.static(path.resolve(__dirname, '..', 'client', 'build')));
+    res.sendFikle(path.resolve(__dirname, '..', 'client', 'build', 'index.html'))
+  })
+}
 
 app.listen(port, ()=>{
     console.log(`Server running on port ${port}...`)
